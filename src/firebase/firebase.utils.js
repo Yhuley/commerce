@@ -2,7 +2,6 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyBJklvcJe4k1AXL4nBe_GfIRkgFaEP2kDI",
     authDomain: "commerce-d1f4a.firebaseapp.com",
@@ -14,22 +13,22 @@ const firebaseConfig = {
 };
   
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 export const auth = getAuth(app);
-export const createUserProfileDocument = async ( userAuth, additionalData ) => {
+export const createUserProfileDocument = async ( userAuth, additionalData ) => { 
     if (!userAuth) return
 
-    const userRef = doc(db, `users/TPQ4MOVcg4WBIhj7U4DP`);
+    const userRef = doc(db, "users", userAuth.uid);
     const docSnap = await getDoc(userRef);
     console.log(docSnap.exists())
 
-    if (docSnap.exists()) {
+    if (!docSnap.exists()) {
         const { displayName, email } = userAuth;
         const createdAt = new Date();
 
         try {
-            await setDoc(doc(db, "users", "TPQ4MOVcg4WBIhj7U4DP"), {
+            await setDoc((userRef), {
                 displayName,
                 email,
                 createdAt,
