@@ -38,7 +38,7 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
             console.log(err)
         }
 
-        console.log("Document data:", docSnap.data());
+        console.log("Document data:", docSnap);
     } else {
         console.log("No such document!");
     }
