@@ -3,18 +3,24 @@ import "./signin.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth } from "../../firebase/firebase.utils";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 
 
 const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
-        setEmail("")
-        setPassword("")
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            setEmail("")
+            setPassword("")
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     const signInWithGoogle = async () => {
@@ -30,6 +36,7 @@ const SignIn = () => {
             <span>Sign in with wour email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
+                    name="email"
                     value={email}
                     type="email"
                     handleChange={e => setEmail(e.target.value)}

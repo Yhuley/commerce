@@ -11,7 +11,6 @@ import { onSnapshot } from "firebase/firestore";
  
  function App() {
      const [currentUser, setCurrentUser] = useState(null)
-     //const snapShotUnsubscribeRef = useRef();
 
      useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async userAuth => {          

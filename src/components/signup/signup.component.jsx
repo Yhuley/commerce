@@ -22,20 +22,10 @@ const SignUp = () => {
 
         try {
             const { user } = await createUserWithEmailAndPassword(auth, email, password)
-            console.log(user)
             await createUserProfileDocument({...user, displayName}, {password});
         } catch (error) {
             console.log(error)
         }
-        // createUserWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         console.log(userCredential) 
-        //         createUserProfileDocument(user, displayName, password);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     });
 
         setDisplayName("")
         setEmail("")
