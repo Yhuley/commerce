@@ -31,7 +31,6 @@ import { onSnapshot } from "firebase/firestore";
      }, [])
 
      return (
-        
         <>
             <Header currentUser={currentUser}/>
             {console.log(currentUser)}
