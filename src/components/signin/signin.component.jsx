@@ -25,9 +25,9 @@ const SignIn = () => {
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider()
-        signInWithPopup(auth, provider)
-        .then(re => console.log(re))
-        .catch(e => console.log(e))
+        await signInWithPopup(auth, provider)
+        // .then(re => console.log(re))
+        // .catch(e => console.log(e))
     }
 
     return (

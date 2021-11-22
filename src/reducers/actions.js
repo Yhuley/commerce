@@ -1,3 +1,3 @@
-export const GET_USERS = "GET_USERS"
+export const SET_CURRENT_USER = "SET_CURRENT_USER"
 
-export const getUsersActionCreator = users => ({type: GET_USERS, payload: users})
+export const setCurrentUserActionCreator = user => ({type: SET_CURRENT_USER, payload: user})
