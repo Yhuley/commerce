@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import HomePage from './pages/homepage/homepage.component';
 import { Route, Routes } from "react-router-dom";
@@ -9,13 +9,11 @@ import SignInAndSignUpPage from "./pages/signin-and-signup-page/signin-and-signu
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
-import { SET_CURRENT_USER, setCurrentUserActionCreator } from './reducers/actions';
+import { setCurrentUserActionCreator } from './reducers/actions';
  
  function App() {
-     //const [currentUser, setCurrentUser] = useState(null)
      const currentUser = useSelector(state => state.userReducer.currentUser)
      const dispatch = useDispatch()
-
 
      useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async userAuth => {          
@@ -43,6 +41,7 @@ import { SET_CURRENT_USER, setCurrentUserActionCreator } from './reducers/action
                 <Route index element={<HomePage/>}/>
                 <Route path="shop" element={<ShopPage/>}/>
                 <Route path="signin" element={<SignInAndSignUpPage/>}/>
+                <Route path="*" element={<div>404</div>}/>
             </Routes>
         </>
      );
