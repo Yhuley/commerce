@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./header.styles.scss";
 import  { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = () => {
+    const [isCartVisible, setIsCartVisible] = useState(false)
     const currentUser = useSelector(state => state.userReducer.currentUser)
 
     return (
@@ -31,8 +33,12 @@ const Header = () => {
                         SIGN IN
                     </Link>
                 }
-                <CartIcon />
+                <div onClick={() => setIsCartVisible(!isCartVisible)}>
+                    <CartIcon  />
+                </div>
+                
             </div>
+            {isCartVisible && <CartDropdown />}
         </div>
     )
 }
