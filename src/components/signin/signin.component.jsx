@@ -25,9 +25,11 @@ const SignIn = () => {
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider()
-        await signInWithPopup(auth, provider)
-        // .then(re => console.log(re))
-        // .catch(e => console.log(e))
+        try {
+            await signInWithPopup(auth, provider)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
