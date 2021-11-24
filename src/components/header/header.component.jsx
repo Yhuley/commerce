@@ -33,12 +33,12 @@ const Header = () => {
                         SIGN IN
                     </Link>
                 }
-                <div onClick={() => setIsCartVisible(!isCartVisible)}>
-                    <CartIcon  />
+                <div onClick={() => setIsCartVisible(true)} >
+                    <CartIcon />
                 </div>
                 
             </div>
-            {isCartVisible && <CartDropdown />}
+            {isCartVisible && <CartDropdown setIsCartVisible={setIsCartVisible}/>}
         </div>
     )
 }

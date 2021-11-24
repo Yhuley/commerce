@@ -1,5 +1,5 @@
 .cart-dropdown {
-    position: absolute;
+    position: fixed;
     width: 240px;
     height: 340px;
     display: flex;
@@ -16,6 +16,21 @@
       display: flex;
       flex-direction: column;
       overflow-y: scroll;
+    
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 10px;
+      }
+    
+      &::-webkit-scrollbar-track {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgb(90, 90, 90);
+        border-radius: 3px;
+      }
     }
   
     button {
