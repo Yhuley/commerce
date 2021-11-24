@@ -1,5 +1,6 @@
-import  initialState from "./initialstate"
 import { SET_CURRENT_USER } from "./actions"
+
+const initialState = { currentUser: null }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
