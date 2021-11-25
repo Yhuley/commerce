@@ -10,6 +10,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 import { setCurrentUserActionCreator } from './reducers/actions';
+import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
  
  function App() {
      const currentUser = useSelector(state => state.userReducer.currentUser)
@@ -41,6 +42,7 @@ import { setCurrentUserActionCreator } from './reducers/actions';
                 <Route index element={<HomePage/>}/>
                 <Route path="shop" element={<ShopPage/>}/>
                 <Route path="signin" element={<SignInAndSignUpPage/>}/>
+                <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
                 <Route path="*" element={<div>404</div>}/>
             </Routes>
         </>
