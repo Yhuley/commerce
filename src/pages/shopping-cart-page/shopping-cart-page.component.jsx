@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./shopping-cart-page.styles.scss";
 
 const ShoppingCartPage = () => {
+    const { cartItems } = useSelector(state => state.cartReducer)
+    const { totalPrice } = useSelector(state => state.cartReducer)
 
     return (
         <div className="shopping-cart">

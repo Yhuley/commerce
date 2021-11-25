@@ -8,7 +8,6 @@ const CollectionItem = ({ item }) => {
     const { name, price, imageUrl } = item
     const dispatch = useDispatch()
 
-
     return (
         <div className="collection-item">
             <div 

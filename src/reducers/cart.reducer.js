@@ -1,7 +1,8 @@
 import { ADD_ITEM_TO_CART } from "./actions"
 import { addItemToCart } from "./cart.utils"
+import { countAsync } from "./async"
 
-const initialState = { cartItems: [], totalCount: 0 }
+const initialState = { cartItems: [], totalCount: 0, totalPrice: 0 }
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -9,7 +10,7 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload),
-                totalCount: state.cartItems.reduce((acc, cartItem) => acc + cartItem.count, 1)
+                totalCount: console.log(state.cartItems)
             }
         default :
             return state
