@@ -2,7 +2,7 @@ import React from "react";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { useDispatch } from "react-redux";
-import { addItemToCart,  calculateTotalCount } from "../../reducers/actions";
+import { addItemToCart,  incrementTotalCount } from "../../reducers/actions";
 
 const CollectionItem = ({ item }) => {
     const { name, price, imageUrl } = item
@@ -10,7 +10,7 @@ const CollectionItem = ({ item }) => {
 
     const addToCart = () => {
         dispatch(addItemToCart(item))
-        dispatch(calculateTotalCount(item))
+        dispatch(incrementTotalCount())
     }
 
     return (
