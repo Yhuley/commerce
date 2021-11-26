@@ -12,7 +12,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const handleSubmit =async e => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
         if (password !== confirmPassword) {

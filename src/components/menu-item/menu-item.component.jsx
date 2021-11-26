@@ -2,7 +2,7 @@ import React from "react";
 import "./menu-item.styles.scss"
 import { useNavigate } from "react-router-dom";
 
-const MenuItem = ({ title, subtitle, imageUrl, size}) => {
+const MenuItem = ({ title, imageUrl, size}) => {
     const navigate = useNavigate()
 
     return (
