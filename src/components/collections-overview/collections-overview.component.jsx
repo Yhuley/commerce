@@ -7,10 +7,12 @@ import PreviewCollection from "../preview-collection/preview-collection.componen
 const CollectionsOverview = () => {
     const { collections } = useSelector(state => state.shopReducer)
 
+    const collectionsForPreview = Object.keys(collections).map(key => collections[key])
+
     return (
         <div className="collections-overview">
             {
-                collections.map(({id, ...oterProps}) => (
+                collectionsForPreview.map(({id, ...oterProps}) => (
                     <PreviewCollection key={id} {...oterProps}/>
                 ))
             }

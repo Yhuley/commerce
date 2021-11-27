@@ -11,7 +11,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 import { setCurrentUserActionCreator } from './reducers/actions';
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
-import CategoryPage from './pages/categorypage/categorypage.component';
+import CategoryPage from './pages/collectionpage/collectionpage.component';
  
  function App() {
      const { currentUser } = useSelector(state => state.userReducer)
@@ -43,7 +43,7 @@ import CategoryPage from './pages/categorypage/categorypage.component';
                 <Route index element={<HomePage/>}/>
                 <Route path="shop">
                     <Route index element={<ShopPage/>}/>
-                    <Route path=":category" element={<CategoryPage/>}/>
+                    <Route path=":collection" element={<CategoryPage/>}/>
                 </Route>
                 <Route path="signin" element={<SignInAndSignUpPage/>}/>
                 <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
