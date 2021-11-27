@@ -1,17 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux"
-import PreviewCollection from "../../components/preview-collection/preview-collection.component";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 
 const ShopPage = () => {
-const { collections } = useSelector(state => state.shopReducer)
     
     return (
         <div className="shop-page">
-            {
-                collections.map(({id, ...oterProps}) => (
-                    <PreviewCollection key={id} {...oterProps}/>
-                ))
-            }
+           <CollectionsOverview />
         </div>
     )
 }
