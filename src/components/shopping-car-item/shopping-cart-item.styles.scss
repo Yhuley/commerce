@@ -24,6 +24,13 @@
   
     .count {
       padding-left: 20px;
+      display: flex;
+      gap: 10px;
+
+      .arrow {
+        font-weight: 700;
+        cursor: pointer;
+      }
     }
   
     .remove-button {
