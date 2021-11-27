@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import ShoppingCartItem from "../../components/shopping-car-item/shopping-cart-item.component";
 import "./shopping-cart-page.styles.scss";
+import StripeButton from "../../components/stripe-button/stripe-button.component";
 
 const ShoppingCartPage = () => {
     const { cartItems, totalPrice } = useSelector(state => state.cartReducer)
@@ -33,6 +34,7 @@ const ShoppingCartPage = () => {
             <div className="total">
                 <span>TOTAL PRICE: {totalPrice}</span>
             </div>
+            {totalPrice ? <StripeButton price={totalPrice}/> : null}
         </div>
     )
 }
