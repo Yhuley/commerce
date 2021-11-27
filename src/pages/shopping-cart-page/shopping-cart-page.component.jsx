@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ShoppingCartItem from "../../components/shopping-car-item/shopping-cart-item.component";
 import "./shopping-cart-page.styles.scss";
 
 const ShoppingCartPage = () => {
-    const { cartItems, totalPrice, totalCount } = useSelector(state => state.cartReducer)
+    const { cartItems, totalPrice } = useSelector(state => state.cartReducer)
 
     return (
         <div className="shopping-cart">
@@ -25,7 +26,9 @@ const ShoppingCartPage = () => {
                 </div>
             </div>
             {
-                cartItems.map(cartItem => cartItem.name)
+                cartItems.map(cartItem => (
+                    <ShoppingCartItem key={cartItem.id} {...cartItem} />
+                ))
             }
             <div className="total">
                 <span>TOTAL PRICE: {totalPrice}</span>

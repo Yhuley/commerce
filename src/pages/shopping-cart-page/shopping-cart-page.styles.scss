@@ -1,5 +1,5 @@
 .shopping-cart {
-    width: 55%;
+    width: 80%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -15,12 +15,8 @@
   
       .header-block {
         text-transform: capitalize;
-        width: 23%;
-  
-        &:last-child {
-          width: 8%;
-        }
       }
+
     }
   
     .total {
