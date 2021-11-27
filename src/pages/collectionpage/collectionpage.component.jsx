@@ -7,7 +7,7 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 const CollectionPage = () => {
     const params = useParams()
     const { collections } = useSelector(state => state.shopReducer)
-    
+
     const collection = collections[params.collection]
 
     console.log(collection)

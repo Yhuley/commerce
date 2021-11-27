@@ -1,12 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import CollectionItem from "../collection-item/collection-item.component";
 import "./preview-collection.styles.scss"
 
-const PreviewCollection = ({ title, items }) => {
+const PreviewCollection = ({ title, routeName, items }) => {
+    const navigate = useNavigate()
 
     return(
         <div className="collection-preview">
-            <h1 className="title">{title}</h1>
+            <h1 className="title" onClick={() => navigate(routeName)}>{title}</h1>
             <div className="preview">
                 {items
                     .filter((item, index) => index < 4)
