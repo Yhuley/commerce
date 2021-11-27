@@ -13,7 +13,7 @@ import { setCurrentUserActionCreator } from './reducers/actions';
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
  
  function App() {
-     const currentUser = useSelector(state => state.userReducer.currentUser)
+     const { currentUser } = useSelector(state => state.userReducer)
      const dispatch = useDispatch()
 
      useEffect(() => {
