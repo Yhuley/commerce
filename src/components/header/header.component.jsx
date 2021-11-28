@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./header.styles.scss";
 import  { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as Logo } from "../../assets/valentines-clothes.svg";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -18,6 +18,7 @@ const Header = () => {
             </Link>
             <div className="options">
                 <Link className="option" to="/shop">
+                    <Logo className="logo" />
                     SHOP
                 </Link>
                 <Link className="option" to="/contact">

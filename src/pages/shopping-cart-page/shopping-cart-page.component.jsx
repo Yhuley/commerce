@@ -34,7 +34,16 @@ const ShoppingCartPage = () => {
             <div className="total">
                 <span>TOTAL PRICE: {totalPrice}</span>
             </div>
-            {totalPrice ? <StripeButton price={totalPrice}/> : null}
+            
+            {!!totalPrice && 
+                <div className="test-warning">
+                    <StripeButton price={totalPrice}/>
+                    <br />
+                    *Please use this test card for payments:
+                    <br />
+                    4242 4242 4242 4242 - Exp: 01/30 - CVV: 123 
+                </div>
+            }
         </div>
     )
 }

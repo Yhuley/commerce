@@ -1,5 +1,6 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { ReactComponent as Logo } from "../../assets/valentines-clothes.svg";
 
 const StripeButton = ({ price }) => {
     const priceForStripe = price * 100
@@ -17,7 +18,6 @@ const StripeButton = ({ price }) => {
             alipay
             billingAddress
             shippingAddress
-            image="https://svgshare.com/i/CUz.svg"
             amount={priceForStripe}
             panelLabel="Pay Now"
             name="Yhuley Shop"
