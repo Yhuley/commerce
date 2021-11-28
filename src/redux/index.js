@@ -4,7 +4,6 @@ import rootReducer from "../reducers/root.reducer";
 import logger from "redux-logger";
 import storage from 'redux-persist/lib/storage';
 
-
 const persistConfig = {
     key: "root",
     storage,
@@ -12,9 +11,13 @@ const persistConfig = {
     blacklist: ['userReducer']
 }
 
+const miiddlewares = []
+
+if (process.env.NODE_ENV === "development") miiddlewares.push(logger)
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store = createStore(persistedReducer, applyMiddleware(logger))
+const store = createStore(persistedReducer, applyMiddleware(...miiddlewares))
 const persistor = persistStore(store)
 
 export { store, persistor }
