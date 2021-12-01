@@ -7,8 +7,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
     key: "root",
     storage,
-    whiteList: ["cartReducer"],
-    blacklist: ['userReducer']
+    blacklist: ['userReducer', 'shopReducer', 'directoryReducer']
 }
 
 const miiddlewares = []

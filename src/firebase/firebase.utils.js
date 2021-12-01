@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
+import { getFirestore, setDoc, getDoc, doc, collection, writeBatch } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBJklvcJe4k1AXL4nBe_GfIRkgFaEP2kDI",
@@ -21,7 +21,6 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
 
     const userRef = doc(db, "users", userAuth.uid);
     const docSnap = await getDoc(userRef);
-    console.log(docSnap.exists())
 
     if (!docSnap.exists()) {
         const { displayName, email } = userAuth;
@@ -44,4 +43,15 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
     }
 
     return userRef;
+}
+
+export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+     const collectionRef =  collection(db, collectionKey)
+     
+     const batch = writeBatch(db);
+
+     objectsToAdd.forEach(obj => {
+        const newDocRef = doc(collectionRef)
+        console.log(newDocRef)
+     })
 }
