@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { useDispatch } from "react-redux";
 import { addItemToCart,  calculateTotalCount } from "../../reducers/actions";
+import Loading from "../loading/loading.component";
+import BackgroundImageOnLoad from 'background-image-on-load';
 
 const CollectionItem = ({ item }) => {
+    const [isLoading, setIsLoading] = useState(true)
     const { name, price, imageUrl } = item
     const dispatch = useDispatch()
 
@@ -15,12 +18,14 @@ const CollectionItem = ({ item }) => {
 
     return (
         <div className="collection-item">
-            <div 
+            {isLoading && <Loading />}
+            <img 
+                onLoad={() => setIsLoading(false)}
                 className="image"
-                style={{backgroundImage: `url(${imageUrl})`}}    
+                src={imageUrl}    
             />
             <div className="collection-footer">
-                <span className="name">{name}</span>
+                <span className="name"  onClick={() => setIsLoading(false)}>{name}</span>
                 <span className="price">{price}</span>
             </div>
             <CustomButton onClick={addToCart} inverted>Add to cart</CustomButton>
