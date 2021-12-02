@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART, CALCULATE_TOTAL_COUNT, DECREASE_ITEM, REMOVE_ITEM_FROM_CART } from "../actions"
+import { ADD_ITEM_TO_CART, CALCULATE_TOTAL_COUNT, DECREASE_ITEM, REMOVE_ITEM_FROM_CART } from "./cart.actions"
 import { addItemToCart, decreaseItem } from "./cart.utils"
 
 const initialState = { cartItems: [], totalCount: 0, totalPrice: 0 }

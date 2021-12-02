@@ -1,4 +1,4 @@
-import { UPDATE_COLLECTIONS } from "../actions"
+import { UPDATE_COLLECTIONS } from "./shop.actions"
 
 const initialState = {collections: null}
 

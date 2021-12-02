@@ -1,7 +1,7 @@
 import React from "react";
 import "./shopping-cart-item.styles.scss";
 import { useDispatch } from "react-redux";
-import { calculateTotalCount, removeItemFromCart, decreaseItem, addItemToCart } from "../../reducers/actions";
+import { calculateTotalCount, removeItemFromCart, decreaseItem, addItemToCart } from "../../reducers/cart/cart.actions";
 
 const ShoppingCartItem = ({cartItem}) => {
     const { name, imageUrl, price, count } = cartItem

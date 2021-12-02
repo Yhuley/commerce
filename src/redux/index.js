@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "../reducers/root.reducer";
 import logger from "redux-logger";
 import storage from 'redux-persist/lib/storage';
+import thunk from "redux-thunk";
 
 const persistConfig = {
     key: "root",
@@ -10,7 +11,7 @@ const persistConfig = {
     blacklist: ['userReducer', 'shopReducer', 'directoryReducer']
 }
 
-const miiddlewares = []
+const miiddlewares = [thunk]
 
 if (process.env.NODE_ENV === "development") miiddlewares.push(logger)
 

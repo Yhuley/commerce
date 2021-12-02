@@ -9,11 +9,11 @@ import SignInAndSignUpPage from "./pages/signin-and-signup-page/signin-and-signu
 import { auth, db, createUserProfileDocument, convertCollectionSnapshotToMap } from "./firebase/firebase.utils";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, getDocs } from "firebase/firestore";
-import { setCurrentUserActionCreator, updateCollections } from './reducers/actions';
+import { setCurrentUser } from './reducers/user/user.actions';
+import { updateCollections } from "./reducers/shop/shop.actions"
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
 import CategoryPage from './pages/collectionpage/collectionpage.component';
 import Loading from "./components/loading/loading.component";
-import axios from "axios";
  
  function App() {
      const [isLoading, setIsLoading] = useState(true)
@@ -26,10 +26,10 @@ import axios from "axios";
                 
                 onSnapshot( userRef, doc => {
                     const userData = doc.data()
-                    dispatch(setCurrentUserActionCreator({id: doc.id, ...userData}))
+                    dispatch(setCurrentUser({id: doc.id, ...userData}))
                 });
             } else {
-                dispatch(setCurrentUserActionCreator(userAuth))
+                dispatch(setCurrentUser(userAuth))
             }
         })
 
