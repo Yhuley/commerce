@@ -32,7 +32,7 @@ import { getCollectionsForPreview } from './reducers/shop/utils';
             } else {
                 dispatch(setCurrentUserActionCreator(userAuth))
             }
-            addCollectionAndDocuments("collections", collectionsArray)
+            //addCollectionAndDocuments("collections", collectionsArray.map(({ title, items}) => ({ title, items })))
         })
 
         return () => unsubscribe()

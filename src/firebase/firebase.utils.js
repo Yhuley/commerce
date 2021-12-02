@@ -13,9 +13,11 @@ const firebaseConfig = {
 };
   
 const app = initializeApp(firebaseConfig);
+
 export const db = getFirestore(app);
 
 export const auth = getAuth(app);
+
 export const createUserProfileDocument = async ( userAuth, additionalData ) => { 
     if (!userAuth) return
 
@@ -45,13 +47,30 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
     return userRef;
 }
 
-export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
-     const collectionRef =  collection(db, collectionKey)
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+     const collectionRef =  collection(db, collectionKey);
      
      const batch = writeBatch(db);
 
      objectsToAdd.forEach(obj => {
         const newDocRef = doc(collectionRef)
-        console.log(newDocRef)
+        batch.set(newDocRef, obj)
      })
+
+     return await batch.commit();
+}
+
+export const convertCollectionSnapshotToMap = collections => {
+    const convertedCollections = collections.docs.map(doc => {
+        const { title, items } =  doc.data()
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    })
+
+    console.log(convertedCollections)
 }
