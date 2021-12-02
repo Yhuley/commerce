@@ -1,1 +1,1 @@
-export const getCollectionsForPreview = collections => Object.keys(collections).map(key => collections[key])
+export const getCollectionsForPreview = collections => collections ? Object.keys(collections).map(key => collections[key]) : []
