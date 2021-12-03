@@ -11,13 +11,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 import { setCurrentUser } from './reducers/user/user.actions';
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
-import CategoryPage from './pages/collectionpage/collectionpage.component';
+import CollectionPage from './pages/collectionpage/collectionpage.component';
 import Loading from "./components/loading/loading.component";
 import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
  
  function App() {
      const dispatch = useDispatch()
-     const { isFetching } = useSelector(state => state.shopReducer)
+     
 
      useEffect( async () => {
         const unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {          
@@ -34,7 +34,6 @@ import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
         })
 
 
-        dispatch(fetchCollectionsStartAsync())
 
         return () => { 
             unsubscribeFromAuth()
@@ -44,20 +43,18 @@ import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
      return (
         <>
             <Header/>
-            {isFetching ? (
-                <Loading />
-            ) : (
+            
                 <Routes>
                     <Route index element={<HomePage/>}/>
                     <Route path="shop">
                         <Route index element={<ShopPage/>}/>
-                        <Route path=":collection" element={<CategoryPage/>}/>
+                        <Route path=":collection" element={<CollectionPage/>}/>
                     </Route>
                     <Route path="signin" element={<SignInAndSignUpPage/>}/>
                     <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
                     <Route path="*" element={<div>404</div>}/>
                 </Routes>
-            )}
+            
         </>
      );
  }
