@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import HomePage from './pages/homepage/homepage.component';
 import { Route, Routes } from "react-router-dom";
 import ShopPage from './pages/shoppage/shoppage.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from "./pages/signin-and-signup-page/signin-and-signup.page";
-import { auth, db, createUserProfileDocument, convertCollectionSnapshotToMap } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, onSnapshot, getDocs } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import { setCurrentUser } from './reducers/user/user.actions';
-import { updateCollections } from "./reducers/shop/shop.actions"
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
 import CategoryPage from './pages/collectionpage/collectionpage.component';
 import Loading from "./components/loading/loading.component";
+import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
  
  function App() {
-     const [isLoading, setIsLoading] = useState(true)
      const dispatch = useDispatch()
+     const { isFetching } = useSelector(state => state.shopReducer)
 
      useEffect( async () => {
         const unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {          
@@ -34,13 +34,7 @@ import Loading from "./components/loading/loading.component";
         })
 
 
-        const collectionRef = collection(db, "collections")
-        const docSnap = await getDocs(collectionRef);
-
-        const collectionMap = convertCollectionSnapshotToMap(docSnap)
-        dispatch(updateCollections(collectionMap))
-        
-        setIsLoading(false)
+        dispatch(fetchCollectionsStartAsync())
 
         return () => { 
             unsubscribeFromAuth()
@@ -50,7 +44,7 @@ import Loading from "./components/loading/loading.component";
      return (
         <>
             <Header/>
-            {isLoading ? (
+            {isFetching ? (
                 <Loading />
             ) : (
                 <Routes>
