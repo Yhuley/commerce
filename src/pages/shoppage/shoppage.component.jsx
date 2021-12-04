@@ -7,10 +7,12 @@ import { fetchCollectionsStartAsync } from "../../reducers/shop/shop.actions";
 
 const ShopPage = () => {
     const dispatch = useDispatch()
-    const { isFetching } = useSelector(state => state.shopReducer)
+    const { isFetching, collections } = useSelector(state => state.shopReducer)
 
     useEffect(() => {
-        dispatch(fetchCollectionsStartAsync())
+        if (!collections) {
+            dispatch(fetchCollectionsStartAsync())
+        }  
     }, [])
 
     return (
@@ -18,7 +20,7 @@ const ShopPage = () => {
             {isFetching ? (
                 <Loading />
             ) : (
-            <CollectionsOverview />
+                <CollectionsOverview />
             )}
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import HomePage from './pages/homepage/homepage.component';
 import { Route, Routes } from "react-router-dom";
 import ShopPage from './pages/shoppage/shoppage.component';
@@ -12,12 +12,9 @@ import { onSnapshot } from "firebase/firestore";
 import { setCurrentUser } from './reducers/user/user.actions';
 import ShoppingCartPage from "./pages/shopping-cart-page/shopping-cart-page.component"
 import CollectionPage from './pages/collectionpage/collectionpage.component';
-import Loading from "./components/loading/loading.component";
-import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
  
  function App() {
-     const dispatch = useDispatch()
-     
+     const dispatch = useDispatch()   
 
      useEffect( async () => {
         const unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {          
@@ -33,8 +30,6 @@ import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
             }
         })
 
-
-
         return () => { 
             unsubscribeFromAuth()
         }
@@ -42,19 +37,17 @@ import { fetchCollectionsStartAsync } from "./reducers/shop/shop.actions";
 
      return (
         <>
-            <Header/>
-            
-                <Routes>
-                    <Route index element={<HomePage/>}/>
-                    <Route path="shop">
-                        <Route index element={<ShopPage/>}/>
-                        <Route path=":collection" element={<CollectionPage/>}/>
-                    </Route>
-                    <Route path="signin" element={<SignInAndSignUpPage/>}/>
-                    <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
-                    <Route path="*" element={<div>404</div>}/>
-                </Routes>
-            
+            <Header/>   
+            <Routes>
+                <Route index element={<HomePage/>}/>
+                <Route path="shop">
+                    <Route index element={<ShopPage/>}/>
+                    <Route path=":collection" element={<CollectionPage/>}/>
+                </Route>
+                <Route path="signin" element={<SignInAndSignUpPage/>}/>
+                <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
+                <Route path="*" element={<div>404</div>}/>
+            </Routes>
         </>
      );
  }

@@ -3,20 +3,36 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./collectionpage.styles.scss";
 import CollectionItem from "../../components/collection-item/collection-item.component";
+import Loading from "../../components/loading/loading.component";
+
 import { fetchCollectionsStartAsync } from "../../reducers/shop/shop.actions";
 
 const CollectionPage = () => {
     const params = useParams()
-    const { collections } = useSelector(state => state.shopReducer)
+    const { collections, isFetching } = useSelector(state => state.shopReducer)
+    
+    const dispatch = useDispatch()
 
-    const collection = collections ? collections[params.collection] : {}
+    useEffect(() => {
+        if (!collections) {
+            dispatch(fetchCollectionsStartAsync())
+        }      
+    }, [])
+    
+    const collection = collections ? collections[params.collection] : null
 
     return (
         <div className="collection-page">
-            <h2 className="title">{collection.title}</h2>
-            <div className="items">
-                {collection.items.map(item => <CollectionItem key={item.id} item={item}/>)}
-            </div>
+            {!!!collections ? (
+                <Loading />
+            ) : (
+                <>
+                    <h2 className="title">{collection.title}</h2>
+                    <div className="items">
+                        {collection.items.map(item => <CollectionItem key={item.id} item={item}/>)}
+                    </div>
+                </>
+            )}
         </div>
     )
 }
