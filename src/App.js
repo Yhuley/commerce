@@ -17,22 +17,22 @@ import CollectionPage from './pages/collectionpage/collectionpage.component';
      const dispatch = useDispatch()   
 
      useEffect( async () => {
-        const unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {          
-            if (userAuth) {               
-                const userRef = await createUserProfileDocument(userAuth)
+        // const unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {          
+        //     if (userAuth) {               
+        //         const userRef = await createUserProfileDocument(userAuth)
                 
-                onSnapshot( userRef, doc => {
-                    const userData = doc.data()
-                    dispatch(setCurrentUser({id: doc.id, ...userData}))
-                });
-            } else {
-                dispatch(setCurrentUser(userAuth))
-            }
-        })
+        //         onSnapshot( userRef, doc => {
+        //             const userData = doc.data()
+        //             dispatch(setCurrentUser({id: doc.id, ...userData}))
+        //         });
+        //     } else {
+        //         dispatch(setCurrentUser(userAuth))
+        //     }
+        // })
 
-        return () => { 
-            unsubscribeFromAuth()
-        }
+        // return () => { 
+        //     unsubscribeFromAuth()
+        // }
      }, [])
 
      return (
