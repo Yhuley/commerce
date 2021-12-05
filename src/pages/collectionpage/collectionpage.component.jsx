@@ -5,17 +5,17 @@ import "./collectionpage.styles.scss";
 import CollectionItem from "../../components/collection-item/collection-item.component";
 import Loading from "../../components/loading/loading.component";
 
-import { fetchCollectionsStartAsync } from "../../reducers/shop/shop.actions";
+import { fetchCollectionsStart } from "../../reducers/shop/shop.actions";
 
 const CollectionPage = () => {
     const params = useParams()
-    const { collections, isFetching } = useSelector(state => state.shopReducer)
+    const { collections } = useSelector(state => state.shopReducer)
     
     const dispatch = useDispatch()
 
     useEffect(() => {
         if (!collections) {
-            dispatch(fetchCollectionsStartAsync())
+            dispatch(fetchCollectionsStart())
         }      
     }, [])
     
