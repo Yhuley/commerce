@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./header.styles.scss";
 import  { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/valentines-clothes.svg";
-import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { signOutStart } from "../../reducers/user/user.actions";
 
 const Header = () => {
     const [isCartVisible, setIsCartVisible] = useState(false)
-    const currentUser = useSelector(state => state.userReducer.currentUser)
+    const dispatch = useDispatch()
+    const { currentUser } = useSelector(state => state.userReducer)
+
+    const signOut = () => {
+        dispatch(signOutStart())
+    }
 
     return (
         <div className="header">
@@ -26,7 +31,7 @@ const Header = () => {
                 </Link>
                 {
                     currentUser ?
-                    <div className="option" onClick={() => auth.signOut()}>
+                    <div className="option" onClick={signOut}>
                        SIGN OUT
                     </div>
                     :

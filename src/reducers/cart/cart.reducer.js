@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART, CALCULATE_TOTAL_COUNT, DECREASE_ITEM, REMOVE_ITEM_FROM_CART } from "./cart.actions"
+import { ADD_ITEM_TO_CART, CALCULATE_TOTAL_COUNT, CLEAR_CART, DECREASE_ITEM, REMOVE_ITEM_FROM_CART } from "./cart.actions"
 import { addItemToCart, decreaseItem } from "./cart.utils"
 
 const initialState = { cartItems: [], totalCount: 0, totalPrice: 0 }
@@ -23,12 +23,21 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 cartItems: decreaseItem(state.cartItems, action.payload)
             }
+
         case CALCULATE_TOTAL_COUNT : 
             return {
                 ...state,
                 totalCount: state.cartItems.reduce((acc, prev) => acc + prev.count, 0),
                 totalPrice: state.cartItems.reduce((acc, prev) => acc + prev.price * prev.count, 0)
             }
+        case CLEAR_CART :
+            return {
+                ...state,
+                cartItems: [],
+                totalCount: 0, 
+                totalPrice: 0
+            }
+
         default :
             return state
     }
