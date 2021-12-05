@@ -1,9 +1,15 @@
 import { takeLatest, put, all, call } from "redux-saga/effects"
 
-import { googleSignInSuccess, googleSignInError, GOOGLE_SIGN_IN_START } from "./user.actions"
+import { 
+    signInError, 
+    signInSuccess,
+    GOOGLE_SIGN_IN_START, 
+    EMAIL_SIGN_IN_START, 
+    CHECK_USER_SESSION
+} from "./user.actions"
 
 import { getDoc } from "firebase/firestore";
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import { auth, createUserProfileDocument, getCurrentUser } from "../../firebase/firebase.utils";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 
 function* signInWithGoogle() {
@@ -13,9 +19,9 @@ function* signInWithGoogle() {
         const { user } = yield signInWithPopup(auth, provider)
         const userRef = yield call(createUserProfileDocument, user)
         const userSnap = yield getDoc(userRef)
-        yield put(googleSignInSuccess({ id: userSnap.id, ...userSnap.data() }))
+        yield put(signInSuccess({ id: userSnap.id, ...userSnap.data() }))
     } catch (error) {
-        put(googleSignInError(error))
+        yield (signInError(error))
     }
 }
 
@@ -23,8 +29,41 @@ export function* onGoogleSignInStart() {
     yield takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
 
-export function* userSagas() {
+function* signInWithEmail({ payload: { email, password }}) {
+    try {
+        const { user } = yield signInWithEmailAndPassword(auth, email, password)
+        const userRef = yield call(createUserProfileDocument, user)
+        const userSnap = yield getDoc(userRef)
+        yield put(signInSuccess({ id: userSnap.id, ...userSnap.data() }))
+    } catch (error) {
+        yield put(signInError(error))
+    }
+}
+
+export function* onEmailSignInStart() {
+    yield takeLatest(EMAIL_SIGN_IN_START, signInWithEmail)
+}
+
+function* isUserAuth() {
+    try {
+        const userAuth = yield getCurrentUser()
+        if (!userAuth) return
+        const userRef = yield call(createUserProfileDocument, userAuth)
+        const userSnap = yield getDoc(userRef)
+        yield put(signInSuccess({ id: userSnap.id, ...userSnap.data() }))
+    } catch(error) {
+        yield put(signInError(error))
+    }
+}
+
+export function* onCheckUserSession() {
+    yield takeLatest(CHECK_USER_SESSION, isUserAuth)
+}
+
+export function* userSagas() { 
     yield all([
-        call(onGoogleSignInStart)
+        call(onGoogleSignInStart),
+        call(onEmailSignInStart),
+        call(onCheckUserSession)
     ])
 }

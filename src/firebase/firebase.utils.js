@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, setDoc, getDoc, doc, collection, writeBatch } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -76,4 +76,14 @@ export const convertCollectionSnapshotToMap = collections => {
         acc[collection.title.toLowerCase()] =  collection;
         return acc;
     }, {})
+}
+
+export const getCurrentUser = () => {
+    return new Promise(resolve => {
+        const unsubscribe = onAuthStateChanged(auth, userAuth => {
+            unsubscribe()
+
+            resolve(userAuth)
+        })
+    })
 }

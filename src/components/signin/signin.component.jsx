@@ -3,24 +3,16 @@ import { useDispatch } from "react-redux";
 import "./signin.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-import { googleSignInStart } from "../../reducers/user/user.actions";
+import { googleSignInStart, emailSignInStart } from "../../reducers/user/user.actions";
 
 const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const dispatch = useDispatch()
 
-    const signIn = async e => {
+    const signIn = e => {
         e.preventDefault()
-
-        // try {
-        //     await signInWithEmailAndPassword(auth, email, password)
-        //     setEmail("")
-        //     setPassword("")
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        
+        dispatch(emailSignInStart(email, password))
     }
 
     const signInWithGoogle = () => {
