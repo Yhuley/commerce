@@ -9,10 +9,9 @@ import { fetchCollectionsStart } from "../../reducers/shop/shop.actions";
 
 const CollectionPage = () => {
     const params = useParams()
+    const dispatch = useDispatch()
     const { collections } = useSelector(state => state.shopReducer)
     
-    const dispatch = useDispatch()
-
     useEffect(() => {
         if (!collections) {
             dispatch(fetchCollectionsStart())

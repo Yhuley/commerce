@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 
 import ShopPage from './pages/shoppage/shoppage.component';
@@ -13,7 +13,8 @@ import CollectionPage from './pages/collectionpage/collectionpage.component';
 import { checkUserSession } from "./reducers/user/user.actions"
  
  function App() {
-     const dispatch = useDispatch()   
+     const dispatch = useDispatch()
+     const { currentUser } = useSelector(state => state.userReducer) 
 
      useEffect(() => {
         dispatch(checkUserSession())
