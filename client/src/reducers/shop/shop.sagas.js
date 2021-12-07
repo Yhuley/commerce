@@ -10,7 +10,6 @@ import {
 } from "./shop.actions";
 
 function* fetchCollectionsAsync() {
-    yield console.log("i m fired")
 
     try {
         const collectionRef = collection(db, "collections")
