@@ -25,6 +25,11 @@
     &.large {
       height: 380px;
     }
+    @media screen and (max-width: 760px) {
+      &.large {
+        height: 240px;
+      }
+    }
 
     &:first-child {
       margin-right: 7.5px;

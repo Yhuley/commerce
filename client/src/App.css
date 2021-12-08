@@ -11,3 +11,14 @@ a {
 * {
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 890px) {
+    body {
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 760px) {
+    body {
+        padding: 10px;
+    }
+}
