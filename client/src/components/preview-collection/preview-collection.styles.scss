@@ -3,7 +3,6 @@
   flex-direction: column;
   margin-bottom: 30px;
   @media screen and (max-width: 810px) {
-    margin: 0 30px;
     align-items: center;
   }
   @media screen and (max-width: 460px) {
@@ -23,7 +22,7 @@
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
       }
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 480px) {
         grid-template-columns: 1fr;
       }
   }

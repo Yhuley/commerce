@@ -1,7 +1,8 @@
 .sign-in {
-    width: 420px;
+    width: 430px;
     display: flex;
     flex-direction: column;
+    text-align: center;
 
     .title {
         margin: 10px 0;
@@ -10,5 +11,16 @@
     .buttons {
         display: flex;
         justify-content: space-between;
+
+        @media screen and (max-width: 500px) {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    .mistake {
+        margin-top: 20px;
+        cursor: pointer;
+        text-decoration: underline;
     }
 }

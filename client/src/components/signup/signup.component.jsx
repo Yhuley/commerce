@@ -5,7 +5,7 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { signUpStart } from "../../reducers/user/user.actions";
 
-const SignUp = () => {
+const SignUp = ({ setIsRegistred }) => {
     const [displayName, setDisplayName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,8 +25,7 @@ const SignUp = () => {
 
     return (
         <div className="sign-up">
-            <h2>I don`t  have an account</h2>
-            <span>Sign up with your email and password</span>
+            <h2 className="title">Sign up with your email and password</h2>
             <form onSubmit={handleSubmit}>
                 <FormInput
                     name="displayName" 
@@ -58,10 +57,11 @@ const SignUp = () => {
                     type="password"
                     handleChange={e => setConfirmPassword(e.target.value)}
                     required
-                    label="confirm password"
+                    label="confirm&nbsp;password"
                 />
                 <CustomButton type="submit">Sign Up</CustomButton>
             </form>
+            <span className="mistake" onClick={() => setIsRegistred(true)}>I already have an account</span>
         </div>
     )
 }

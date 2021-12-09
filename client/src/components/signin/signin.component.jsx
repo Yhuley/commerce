@@ -5,7 +5,7 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { googleSignInStart, emailSignInStart } from "../../reducers/user/user.actions";
 
-const SignIn = () => {
+const SignIn = ({ setIsRegistred }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const dispatch = useDispatch()
@@ -21,8 +21,7 @@ const SignIn = () => {
 
     return (
         <div className="sign-in">
-            <h2>I already have an account</h2>
-            <span>Sign in with wour email and password</span>
+            <h2>Sign in with wour email and password</h2>
             <form onSubmit={signIn}>
                 <FormInput 
                     name="email"
@@ -51,6 +50,7 @@ const SignIn = () => {
                     </CustomButton>
                 </div>
             </form>
+            <span className="mistake" onClick={() => setIsRegistred(false)}>I don`t  have an account</span>
         </div>
     )
 }
