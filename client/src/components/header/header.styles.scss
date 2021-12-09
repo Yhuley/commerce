@@ -6,14 +6,8 @@
     margin-bottom: 25px;
     align-items: center;
   
-    .logo-container {
-        font-weight: 600;
-        font-size: 20px;
-
-    }
   
     .options {
-      width: 50%;
       height: 100%;
       display: flex;
       align-items: center;
@@ -27,4 +21,9 @@
       }
     }
   }
+  @media screen and (max-width: 440px) {
+    .header {
+        display: none;
+    } 
+}
   

@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from "../../assets/valentines-clothes.svg";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { signOutStart } from "../../reducers/user/user.actions";
+import Burger from "../burger/burger.component";
 
 const Header = () => {
     const [isCartVisible, setIsCartVisible] = useState(false)
@@ -19,7 +20,7 @@ const Header = () => {
     return (
         <div className="header">
             <Link to="/" className="logo-container">
-                Home
+                HOME
             </Link>
             <div className="options">
                 <Link className="option" to="/shop">
@@ -27,7 +28,7 @@ const Header = () => {
                     SHOP
                 </Link>
                 <Link className="option" to="/contact">
-                    CONTACT
+                    CONTACT US
                 </Link>
                 {
                     currentUser ?
@@ -42,7 +43,6 @@ const Header = () => {
                 <div onClick={() => setIsCartVisible(true)} >
                     <CartIcon />
                 </div>
-                
             </div>
             {isCartVisible && <CartDropdown setIsCartVisible={setIsCartVisible}/>}
         </div>
