@@ -27,8 +27,8 @@ const Header = () => {
                     <Logo className="logo" />
                     SHOP
                 </Link>
-                <Link className="option" to="/contact">
-                    CONTACT US
+                <Link className="option" to="/about">
+                    ABOUT US
                 </Link>
                 {
                     currentUser ?

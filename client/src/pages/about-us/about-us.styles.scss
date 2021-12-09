@@ -1,0 +1,51 @@
+.about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+
+    .github-logo {
+        width: 150px;
+        height: 150px;
+        animation-name: spin;
+        animation-duration: 5000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        margin-bottom: 40px;
+
+        @keyframes spin {
+            from {
+                transform:rotate(0deg);
+            }
+            to {
+                transform:rotate(360deg);
+            }
+        }
+    }
+
+    .description {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        
+        .github-link {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+
+    .tecnologies {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    
+        .technologie {
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: rgb(207, 207, 207);
+            font-weight: 600;
+        }
+    }
+}

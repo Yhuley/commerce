@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-bottom: 30px;
   @media screen and (max-width: 810px) {
-    margin: 0 40px;
+    margin: 0 30px;
     align-items: center;
   }
   @media screen and (max-width: 460px) {
@@ -16,13 +16,15 @@
   }
 
   .preview {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    flex-wrap: wrap;
-    @media screen and (max-width: 460px) {
-      gap: 40px;
-    }
+    display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 10px;
+      @media screen and (max-width: 810px) {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+      }
+      @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+      }
   }
 }

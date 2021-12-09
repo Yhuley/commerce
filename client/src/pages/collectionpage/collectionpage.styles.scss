@@ -1,6 +1,11 @@
 .collection-page {
     display: flex;
     flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    @media screen and (max-width: 380px) {
+      margin: 0 10px;
+    }
   
     .title {
       font-size: 38px;
@@ -11,6 +16,17 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-gap: 10px;
+      @media screen and (max-width: 810px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+      }
+      @media screen and (max-width: 580px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      @media screen and (max-width: 380px) {
+        grid-template-columns: 1fr;
+      }
   
       & .collection-item {
         margin-bottom: 30px;
