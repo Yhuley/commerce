@@ -14,6 +14,7 @@ const Burger = () => {
 
     const signOut = () => {
         dispatch(signOutStart())
+        
     }
 
     const hideSidebar = () => setSidebar(false)
