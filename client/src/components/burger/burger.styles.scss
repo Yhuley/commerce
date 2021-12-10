@@ -25,24 +25,19 @@
     }
   }
 
+ 
   .nav-menu {
     position: absolute;
     top: 70px;
-    right: 0;
+    right: -82%;
     width: 80%;
-    height: 1500px;
+    height: 1000px;
     background-color: white;
     z-index: 2;
     box-shadow: 0 1px 10px rgb(117, 117, 117);
 
-    .showBurgerMenu {
-      animation: showBurgerMenu .3s ease;
-    }
+    transition: .3s;
 
-    .hideBurgerMenu {
-      animation: hideBurgerMenu .3s ease;
-
-    }
     .nav-menu-items {
       list-style: none;
       display: flex;
@@ -65,25 +60,7 @@
       }
     }
   }
-
-}
-
-@keyframes showBurgerMenu {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hideBurgerMenu {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
+  .nav-menu-active {
+    right: 0;
   }
 }

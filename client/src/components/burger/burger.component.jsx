@@ -8,7 +8,6 @@ import * as AiIcons from "react-icons/ai";
 
 const Burger = () => {
     const [sidebar, setSidebar] = useState(false)
-    const [sidebarAnimClass, setSidebarAnimClass] = useState('showBurgerMenu')
 
     const { currentUser } = useSelector(state => state.userReducer)
     const dispatch = useDispatch()
@@ -17,20 +16,15 @@ const Burger = () => {
         dispatch(signOutStart())
     }
 
-    const hideSidebar = () =>{
-        setSidebarAnimClass('hideBurgerMenu')
-        setTimeout(() => {
-            setSidebarAnimClass('showBurgerMenu')
-            setSidebar(false)
-        }, 300)
-    }
+    const hideSidebar = () => setSidebar(false)
+
 
     return (
         <div className={`burger-container `}>
             <div className="burger-bars" onClick={() => setSidebar(!sidebar)}>
                 {sidebar ? <AiIcons.AiOutlineClose /> : <FaIcons.FaBars />}
             </div>
-            {sidebar && <div className={`nav-menu ${sidebarAnimClass}`}>
+            <div className={sidebar ? `nav-menu nav-menu-active` : 'nav-menu'}>
                 <ul className="nav-menu-items">
                     <li className="nav-menu-item" onClick={hideSidebar}>
                         <Link to="/">
@@ -65,7 +59,9 @@ const Burger = () => {
                         </Link>
                     </li>
                 </ul>
-            </div>}        
+            </div>
+
+
         </div>
     )
 }
