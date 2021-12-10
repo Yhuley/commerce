@@ -1,7 +1,6 @@
 .collection-page {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
     margin: 0 auto;
     @media screen and (max-width: 380px) {
       margin: 0 10px;
@@ -14,22 +13,25 @@
   
     .items {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 10px;
-      @media screen and (max-width: 810px) {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 20px;
+      margin: 0 auto;
+      @media screen and (max-width: 1250px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
       }
-      @media screen and (max-width: 580px) {
+      @media screen and (max-width: 1050px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media screen and (max-width: 770px) {
         grid-template-columns: 1fr 1fr;
       }
       
-      @media screen and (max-width: 380px) {
+      @media screen and (max-width: 480px) {
         grid-template-columns: 1fr;
       }
   
       & .collection-item {
-        margin-bottom: 30px;
+        margin: 0 auto;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { useDispatch } from "react-redux";
