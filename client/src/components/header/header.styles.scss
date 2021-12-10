@@ -1,11 +1,18 @@
 .header {
     height: 70px;
     width: 100%;
+    position: fixed;
+    z-index: 99;
+    padding: 20px;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
     align-items: center;
-  
+    box-shadow: 0 1px 10px gray;
+    @media screen and (max-width: 600px) {
+      display: none;
+    } 
   
     .options {
       height: 100%;
@@ -21,9 +28,4 @@
       }
     }
   }
-  @media screen and (max-width: 440px) {
-    .header {
-        display: none;
-    } 
-}
   

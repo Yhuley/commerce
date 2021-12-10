@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./header.styles.scss";
 import  { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import { ReactComponent as Logo } from "../../assets/valentines-clothes.svg";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { signOutStart } from "../../reducers/user/user.actions";
-import Burger from "../burger/burger.component";
 
 const Header = () => {
     const [isCartVisible, setIsCartVisible] = useState(false)

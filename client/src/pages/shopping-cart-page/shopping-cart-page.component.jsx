@@ -9,7 +9,7 @@ const ShoppingCartPage = () => {
 
     return (
         <div className="shopping-cart">
-            <div className="header">
+            <div className="cart-header">
                 <div className="header-block">
                     <p>Product</p>
                 </div>
