@@ -19,7 +19,6 @@ const Burger = () => {
 
     const hideSidebar = () => setSidebar(false)
 
-
     return (
         <div className={`burger-container `}>
             <div className="burger-bars" onClick={() => setSidebar(!sidebar)}>
@@ -61,8 +60,6 @@ const Burger = () => {
                     </li>
                 </ul>
             </div>
-
-
         </div>
     )
 }
