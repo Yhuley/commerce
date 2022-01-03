@@ -35,7 +35,8 @@
     background-color: white;
     z-index: 2;
     box-shadow: 0 1px 10px rgb(117, 117, 117);
-
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
     transition: .3s;
 
     .nav-menu-items {
