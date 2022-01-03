@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import ShoppingCartItem from "../../components/shopping-car-item/shopping-cart-item.component";
 import "./shopping-cart-page.styles.scss";

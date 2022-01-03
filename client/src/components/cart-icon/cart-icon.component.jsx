@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import "./cart-icon.styles.scss";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";

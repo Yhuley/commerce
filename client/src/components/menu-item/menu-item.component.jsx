@@ -1,4 +1,3 @@
-import React from "react";
 import "./menu-item.styles.scss"
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import "./collections-overview.styles.scss";
 import { useSelector } from "react-redux";
 import { getCollectionsForPreview } from "../../reducers/shop/utils";

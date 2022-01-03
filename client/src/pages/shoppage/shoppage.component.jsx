@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import { useEffect }  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./shoppage.styles.scss";
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";

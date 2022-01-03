@@ -14,7 +14,7 @@ import NotFound from "./components/not-found/not-found.component";
 import Burger from "./components/burger/burger.component";
 
 import { checkUserSession } from "./reducers/user/user.actions"
- 
+
  function App() {
      const dispatch = useDispatch()
 
