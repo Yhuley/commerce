@@ -30,7 +30,7 @@ app.listen(port, error => {
     console.log("Sever runnig on port" + port)
 })
 
-app.get("/service-worker.js", (req, res) => {
+app.get("/serviceWorker.js", (req, res) => {
     res.send(path.resolve(__dirname, "..", "build", "serviceWorker.js"))
 })
 
