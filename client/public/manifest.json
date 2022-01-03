@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "clothes-hanger256.png",
+      "src": "clothes-hanger192.png",
       "type": "image/png",
-      "sizes": "256x256"
+      "sizes": "192x192"
     },
     {
-      "src": "clothes-hanger512.pn g",
+      "src": "clothes-hanger512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
