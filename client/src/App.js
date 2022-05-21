@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 
 import ShopPage from './pages/shoppage/shoppage.component';
@@ -15,32 +15,33 @@ import Burger from "./components/burger/burger.component";
 
 import { checkUserSession } from "./reducers/user/user.actions"
 
- function App() {
-     const dispatch = useDispatch()
+function App() {
+  const dispatch = useDispatch()
+  const { currentUser } = useSelector(state => state.userReducer)
 
-     useEffect(() => {
-        dispatch(checkUserSession())
-     }, [])
+  useEffect(() => {
+    dispatch(checkUserSession())
+  }, [])
 
-     return (
-        <>
-            <Header />
-            <Burger />
-            <div className="app">
-                <Routes>
-                    <Route index element={<HomePage/>}/>
-                    <Route path="shop">
-                        <Route index element={<ShopPage/>}/>
-                        <Route path=":collection" element={<CollectionPage/>}/>
-                    </Route>
-                    <Route path="about" element={<AboutUs/>}/>
-                    <Route path="signin" element={<SignInAndSignUpPage/>}/>
-                    <Route path="shoppingcart" element={<ShoppingCartPage/>}/>
-                    <Route path="*" element={<NotFound/>}/>
-                </Routes>
-            </div>
-        </>
-     );
- }
+  return (
+    <>
+      <Header />
+      <Burger />
+      <div className="app">
+        <Routes>
+          <Route index element={<HomePage/>}/>
+          <Route path="shop">
+            <Route index element={<ShopPage/>}/>
+            <Route path=":collection" element={<CollectionPage/>}/>
+          </Route>
+          <Route path="about" element={<AboutUs/>}/>
+          {!currentUser && <Route path="signin" element={<SignInAndSignUpPage/>}/>}
+          {currentUser && <Route path="shoppingcart" element={<ShoppingCartPage/>}/>}
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+      </div>
+    </>
+  );
+}
 
- export default App; 
+ export default App;

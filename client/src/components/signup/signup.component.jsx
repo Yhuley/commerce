@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import "./signup.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -11,6 +12,7 @@ const SignUp = ({ setIsRegistred }) => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -21,6 +23,7 @@ const SignUp = ({ setIsRegistred }) => {
         }
 
         dispatch(signUpStart({ displayName, email, password }))
+        navigate('/')
     }
 
     return (

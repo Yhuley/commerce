@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import "./signin.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -9,14 +10,17 @@ const SignIn = ({ setIsRegistred }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const signIn = e => {
         e.preventDefault()
         dispatch(emailSignInStart(email, password))
+        navigate('/')
     }
 
     const signInWithGoogle = () => {
         dispatch(googleSignInStart())
+        navigate('/')
     }
 
     return (
