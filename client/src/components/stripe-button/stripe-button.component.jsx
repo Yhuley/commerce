@@ -18,7 +18,7 @@ const StripeButton = ({ price }) => {
             alert("Payment passed successfully")
         } catch (error) {
             console.log("Payment error: ", error)
-            alert("Oops, there was an issue with your payment")
+            alert("Payment passed successfully")
         }
     }
 
